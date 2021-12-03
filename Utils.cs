@@ -18,10 +18,9 @@ namespace mao_mudblazor_server
     {
         public static int ThreadSleep = 100;
         public static float FloatComparisonThreshold = 0.000001f;
+        public static ICollection<string> AudioSourcePaths { get; set; }
         
-        public static string BaseFilePath { get; set; } = @"D:\Central hub\Files\Games\DND\Assets\Audio";
-        
-        public static IEnumerable<string> GetAllFilesMultiExtension(string filePath, params string[] extensions)
+        public static ICollection<string> GetThisAudioSource(string filePath, params string[] extensions)
         {
             if (!Directory.Exists(filePath)) throw new DirectoryNotFoundException();
             if (extensions == null) throw new ArgumentNullException(nameof(extensions));
@@ -32,7 +31,19 @@ namespace mao_mudblazor_server
                 allFiles.AddRange(Directory.GetFiles(filePath, extension, SearchOption.AllDirectories));
             }
 
-            return allFiles.ToArray();
+            return allFiles;
+        }
+        
+        public static ICollection<string> GetAllAudioSources(params string[] extensions)
+        {
+            var allFiles = new List<string>();
+            foreach (var audioSourcePath in AudioSourcePaths)
+            {
+                if (!Directory.Exists(audioSourcePath)) continue;
+                allFiles.AddRange(GetThisAudioSource(audioSourcePath, extensions));
+            }
+
+            return allFiles;
         }
 
         public static void ScanOutputDevices()

@@ -20,25 +20,20 @@ public static class CoreController
 
     public static void Init()
     {
-        if (!Directory.Exists(Utils.BaseFilePath))
+        var audioSrcLocations = Utils.GetAllAudioSources("*.wav", "*.mp3");
+        foreach (var audioPath in audioSrcLocations)
         {
-            throw new FileNotFoundException($"Utils.BaseFilePath does not exist: '{Utils.BaseFilePath}'");
+            AudioSources.Add(audioPath);
         }
-        OverrideAudioSources(Utils.BaseFilePath);
-    }
 
-    public static void AddToAudioSources(string newFilePath)
-    {
-        foreach (var filepath in Utils.GetAllFilesMultiExtension(newFilePath, "*.wav", "*.mp3"))
+        if (AudioSources.Count != 0)
         {
-            AudioSources.Add(filepath);
+            Utils.Log($"Loaded '{AudioSources.Count}' audio sources from '{Utils.AudioSourcePaths.Count}' locations", LogLevel.Success);
         }
-    }
-
-    public static void OverrideAudioSources(string newFilePath)
-    {
-        AudioSources.Clear();
-        AddToAudioSources(newFilePath);
+        else
+        {
+            Utils.Log("No audio sources found. Make sure `AudioSourcePaths` in `appsettings.json` is set to an array", LogLevel.Warn);
+        }
     }
 
     public static bool ValidateFileName(string fileName, ref string filePath)

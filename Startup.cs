@@ -1,3 +1,6 @@
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -50,8 +53,35 @@ namespace mao_mudblazor_server
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });
-            
+
+            Task.Run(() => MaoSetup(env));
+        }
+
+        public void MaoSetup(IWebHostEnvironment env)
+        {
+            var allAudioSourcePaths = Configuration.GetSection("AudioSourcePaths")?.Get<string[]>() ?? Array.Empty<string>();
+            Utils.AudioSourcePaths = allAudioSourcePaths;
             CoreController.Init();
+            
+            if (!env.IsDevelopment())
+            {
+                var targetUrl = "https://localhost:5001";
+                var configUrls = Configuration.GetValue<string>("Urls") ?? targetUrl;
+                
+                // Check if configUrls is not null or empty and set to targetUrl if it is
+                if (!string.IsNullOrEmpty(configUrls)) configUrls = targetUrl;
+                
+                var targetUrls = configUrls.Split(";");
+                foreach (var url in targetUrls)
+                {
+                    if (!url.Contains("https")) continue;
+                
+                    targetUrl = url;
+                    break;
+                }
+                
+                Process.Start("explorer", targetUrl);
+            }
         }
     }
 }
