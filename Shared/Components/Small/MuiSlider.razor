@@ -1,0 +1,6 @@
+﻿@inherits MuiSliderBase
+
+<span style="@SliderWrap @Style">
+    <span style="@SliderTrack width:@Percent()%;"></span>
+    <MudSlider T="@double" Value="@Value" Step="@Step" Min="@Min" Max="@Max" ValueChanged="@SliderValueChanged"/>
+</span>

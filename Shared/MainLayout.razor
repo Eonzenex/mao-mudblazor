@@ -1,0 +1,28 @@
+﻿@inherits MainLayoutBase
+
+<MudThemeProvider Theme="CurrentTheme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="0">
+        @* <MudButton Color="Color.Inherit" Link="/" Class="mx-4" Style="font-size: large;">Home</MudButton> *@
+        @* <MudButton Color="Color.Inherit" Link="/data" Style="font-size: large;">Data</MudButton> *@
+        
+        @if (UsingDarkMode)
+        { <MudIconButton Icon="@Icons.Filled.Brightness7" Style="margin-left: auto;" OnClick="@ToggleDarkMode"/> }
+        else
+        { <MudIconButton Icon="@Icons.Filled.Brightness4" Style="@LightModeIconStyle" OnClick="@ToggleDarkMode"/> }
+    </MudAppBar>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="my-4 pt-4">
+            <CascadingValue Value="@UsingDarkMode" Name="UsingDarkMode">
+                @Body
+            </CascadingValue>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    
+}

@@ -1,0 +1,58 @@
+﻿@inherits AudioSlotBase
+
+<MudCard Class="mb-4">
+    <MudCardContent Style="display: flex; flex-flow: row;">
+        <div style="min-width: 300px; max-width: 720px; width: 16rem;">
+            <MudText>@FileName</MudText>
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-flow: row;">
+                <MudIcon Icon="@Icons.Filled.VolumeDown"/>
+                <MuiSlider
+                    Value="Volume"
+                    Step="0.1" Min="0" Max="1"
+                    ValueChanged="ChangeVolume"
+                    Style="width: 75%;"
+                />
+                <MudIcon Icon="@Icons.Filled.VolumeUp"/>
+            </div>
+            
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                <MudButton OnClick="Kill" Variant="@KillBtnVariant" Color="Color.Error" Class="mt-6" Style="width: 75%;">Kill</MudButton>
+            </div>
+        </div>
+        <div style="width: 100%; margin: 0 2rem; display: flex; flex-flow: column; align-items: center; justify-content: center;">
+            <MuiSlider
+                Value="@Progress" ValueChanged="ChangeProgress"
+                Min="0" Max="@StreamControls.Length" Step="0.5"
+            />
+            <div style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+                <MudText>@FormatProgress(Progress)</MudText>
+
+                <div style="display: flex; flex-flow: row; align-items: center; justify-content: center;">
+                    <MudIconButton Icon="@Icons.Filled.FastRewind" OnClick="Restart"/>
+
+                    @if (StreamControls.Paused)
+                    {
+                        <MudIconButton Icon="@Icons.Filled.PlayArrow" OnClick="TogglePlayPause"/>
+                    }
+                    else
+                    {
+                        <MudIconButton Icon="@Icons.Filled.Pause" OnClick="TogglePlayPause"/>
+                    }
+
+                    <MudIconButton Icon="@Icons.Filled.Stop" OnClick="Stop"/>
+
+                    @if (StreamControls.Loop)
+                    {
+                        <MudIconButton Icon="@Icons.Filled.RepeatOn" OnClick="ToggleLoop"/>
+                    }
+                    else
+                    {
+                        <MudIconButton Icon="@Icons.Filled.Repeat" OnClick="ToggleLoop" Class="py-0"/>
+                    }
+                </div>
+
+                <MudText>@FormatProgress(StreamControls.Length)</MudText>
+            </div>
+        </div>
+    </MudCardContent>
+</MudCard>

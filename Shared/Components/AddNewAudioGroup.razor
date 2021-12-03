@@ -1,0 +1,11 @@
+﻿@inherits AddNewAudioGroupBase
+
+<MudCard Class="@Class">
+    <MudCardContent Style="display: flex; flex-flow: row; align-items:  center;">
+        <MudTextField @bind-Value="GroupName" Variant="Variant.Outlined" Label="Group name" Style="max-width: 75%" />
+        
+        <MudButton OnClick="CallbackThen" Variant="Variant.Outlined" Style="padding: 15px;">
+            <MudIcon Icon="@Icons.Material.Filled.Add"/>
+        </MudButton>
+    </MudCardContent>
+</MudCard>

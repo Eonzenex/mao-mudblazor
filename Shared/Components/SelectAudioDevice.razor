@@ -1,0 +1,12 @@
+﻿@inherits SelectAudioDeviceBase
+
+<div>
+    <MudForm>
+        <MudSelect T="int" Label="Device" Variant="Variant.Outlined" Value="@SelectedOutputDevice" ValueChanged="@ChangeAudioDevice">
+            @foreach (var outputDevice in OutputDevices)
+            {
+                <MudSelectItem Value="@outputDevice.Id">@outputDevice.Name</MudSelectItem>
+            }
+        </MudSelect>
+    </MudForm>
+</div>
