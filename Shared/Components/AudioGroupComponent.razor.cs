@@ -41,7 +41,7 @@ public class AudioGroupComponentBase : ComponentBase
         var filePath = "";
         if (!CoreController.ValidateFileName(e.File.Name, ref filePath))
         {
-            var msg = $"Filepath does not exist: '{filePath}'";
+            var msg = $"Filepath does not exist: '{e.File.Name}'";
             Utils.Log(msg, LogLevel.Error);
             // throw new FileNotFoundException(msg);
             return;
