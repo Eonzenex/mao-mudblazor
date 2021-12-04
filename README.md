@@ -3,8 +3,8 @@
 A MudBlazor app for playing multiple audio files at the same time.
 
 ## Limitations
-* This app uses NAudio, and is therefore limited to **.wav** and **.mp3** files. (**Note:** Vorbis files (**.ogg**) are a planned feature)
-* **.wav** files are recommended for looping effects/music due to [limitations of the **.mp3** format.](https://lame.sourceforge.io/tech-FAQ.txt)* 
+* This app uses NAudio, and is therefore limited to **.wav**, **.ogg**, and **.mp3** files.
+* **.ogg** files are recommended for looping effects/music due to [limitations of the **.mp3** format.](https://lame.sourceforge.io/tech-FAQ.txt)
 * Due to limitations in Javascript file selection & C# file dialog incompatibility with console apps, the app must scan directories before playing audio files.
 
 
