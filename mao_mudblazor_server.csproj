@@ -7,8 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
     <PackageReference Include="MudBlazor" Version="5.1.5" />
-    <PackageReference Include="NAudio.EonZeNx" Version="3.0.1" />
-    <PackageReference Include="NAudio.WinMM.EonZeNx" Version="3.0.1" />
+    <PackageReference Include="NAudio.EonZeNx" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ public static class CoreController
 
     public static void Init()
     {
-        var audioSrcLocations = Utils.GetAllAudioSources("*.wav", "*.mp3");
+        var audioSrcLocations = Utils.GetAllAudioSources("*.wav", "*.mp3", "*.ogg");
         foreach (var audioPath in audioSrcLocations)
         {
             AudioSources.Add(audioPath);
