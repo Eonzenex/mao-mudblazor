@@ -7,8 +7,8 @@ public class StreamController
     #region Getters
 
     public static bool DoesStreamIdExists(int streamId) => CoreController.StreamControls.ContainsKey(streamId);
-    public static IEnumerable<NewStreamControls> GetAllStreamControls() => CoreController.StreamControls.Values;
-    public static NewStreamControls GetStreamControls(int streamId) => CoreController.StreamControls[streamId];
+    public static IEnumerable<StreamControls> GetAllStreamControls() => CoreController.StreamControls.Values;
+    public static StreamControls GetStreamControls(int streamId) => CoreController.StreamControls[streamId];
     
     #endregion
 

@@ -39,7 +39,7 @@ public class AudioSlotBase : ComponentBase
 
     
     public bool TryingToKill { get; set; } = false;
-    protected NewStreamControls StreamControls => TryingToKill ? null : StreamController.GetStreamControls(StreamId);
+    protected StreamControls StreamControls => TryingToKill ? null : StreamController.GetStreamControls(StreamId);
     protected Variant KillBtnVariant => UsingDarkMode ?? false ? Variant.Filled : Variant.Outlined;
 
     

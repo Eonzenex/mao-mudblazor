@@ -8,8 +8,8 @@ public static class CoreController
 {
     public static readonly HashSet<string> AudioSources = new();
     
-    public static readonly Dictionary<int, NewGroupControls> GroupControls = new ();
-    public static readonly Dictionary<int, NewStreamControls> StreamControls = new ();
+    public static readonly Dictionary<int, GroupControls> GroupControls = new ();
+    public static readonly Dictionary<int, StreamControls> StreamControls = new ();
 
 
     public static void Init()
@@ -52,7 +52,7 @@ public static class CoreController
         return GroupControls[groupId].StreamIds;
     }
     
-    public static IEnumerable<NewStreamControls> GetStreamControlsInGroup(int groupId)
+    public static IEnumerable<StreamControls> GetStreamControlsInGroup(int groupId)
     {
         if (!GroupControls.ContainsKey(groupId))
             throw new KeyNotFoundException($"Group ID not found in GroupControls: '{groupId}'");
@@ -225,7 +225,7 @@ public static class CoreController
             throw new KeyNotFoundException(msg);
         }
         
-        StreamControls.Add(streamId, new NewStreamControls());
+        StreamControls.Add(streamId, new StreamControls());
 
         return streamId;
     }
@@ -234,7 +234,7 @@ public static class CoreController
     {
         var keysSorted = GroupControls.Keys.OrderBy(k => k).ToArray();
         var groupId = keysSorted.Length == 0 ? 0 : keysSorted[^1] + 1;
-        GroupControls[groupId] = new NewGroupControls{GroupId = groupId, DeviceId = deviceId, Name = name};
+        GroupControls[groupId] = new GroupControls{GroupId = groupId, DeviceId = deviceId, Name = name};
 
         return groupId;
     }

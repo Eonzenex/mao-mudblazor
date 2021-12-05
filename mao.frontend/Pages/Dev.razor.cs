@@ -13,8 +13,8 @@ public class DataBase : ComponentBase
     protected override void OnInitialized() => OnChange += StateHasChanged;
 
 
-    public Dictionary<int, NewGroupControls> GroupDictionary => CoreController.GroupControls;
-    public Dictionary<int, NewStreamControls> StreamDictionary => CoreController.StreamControls;
+    public Dictionary<int, GroupControls> GroupDictionary => CoreController.GroupControls;
+    public Dictionary<int, StreamControls> StreamDictionary => CoreController.StreamControls;
 
     public int CountStreamsInGroup(int groupId) => GroupDictionary[groupId].StreamIds.Count;
 }

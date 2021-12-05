@@ -17,7 +17,7 @@ public class AudioGroupComponentBase : ComponentBase
     
     
     [Parameter] public int GroupId { get; set; }
-    public NewGroupControls GroupControls => GroupController.GetGroupControls(GroupId);
+    public GroupControls GroupControls => GroupController.GetGroupControls(GroupId);
 
     public IEnumerable<int> Streams => CoreController.GetStreamIdsInGroup(GroupId)
         .Where(StreamController.DoesStreamIdExists)
