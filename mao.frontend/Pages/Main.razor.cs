@@ -15,7 +15,7 @@ namespace mao.frontend.Pages
         protected override void OnInitialized() => OnChange += StateHasChanged;
         
         
-        public IEnumerable<NewGroupControls> Groups  => CoreController.GroupControls.Values.ToArray();
+        public IEnumerable<GroupControls> Groups  => CoreController.GroupControls.Values.ToArray();
 
         public void AddNewGroup(string name = "New")
         {

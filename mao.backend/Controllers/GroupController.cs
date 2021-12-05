@@ -7,10 +7,10 @@ public class GroupController
     #region Getters
 
     public static IEnumerable<int> GetAllGroupIds() => CoreController.GroupControls.Keys;
-    public static IEnumerable<NewGroupControls> GetAllGroupControls() => CoreController.GroupControls.Values;
-    public static NewGroupControls GetGroupControls(int groupId) => CoreController.GroupControls[groupId];
+    public static IEnumerable<GroupControls> GetAllGroupControls() => CoreController.GroupControls.Values;
+    public static GroupControls GetGroupControls(int groupId) => CoreController.GroupControls[groupId];
     public static IEnumerable<int> GetStreamIdsInGroup(int groupId) => GetGroupControls(groupId).StreamIds;
-    public static IEnumerable<NewStreamControls> GetStreamControlsInGroup(int groupId) => GetStreamIdsInGroup(groupId).Select(StreamController.GetStreamControls).ToList();
+    public static IEnumerable<StreamControls> GetStreamControlsInGroup(int groupId) => GetStreamIdsInGroup(groupId).Select(StreamController.GetStreamControls).ToList();
 
     #endregion
 

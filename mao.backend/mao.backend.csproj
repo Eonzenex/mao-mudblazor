@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="NAudio.Core.EonZeNx" Version="3.0.0" />
-      <PackageReference Include="NAudio.EonZeNx" Version="3.1.1" />
+      <PackageReference Include="NAudio.EonZeNx" Version="3.2.0" />
       <PackageReference Include="NAudio.WinMM.EonZeNx" Version="3.0.1" />
     </ItemGroup>
 
