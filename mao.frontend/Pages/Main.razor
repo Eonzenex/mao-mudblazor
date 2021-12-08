@@ -6,7 +6,7 @@
     
     @foreach (var group in Groups)
     {
-        <AudioGroupComponent GroupId="group.GroupId"/>
+        <AudioGroupComponent GroupId="group.GroupId" OnGroupKill="@OnGroupKill"/>
     }
 
     <AddNewAudioGroup Callback="AddNewGroup" Class="mt-4"/>

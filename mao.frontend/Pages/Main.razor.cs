@@ -25,5 +25,10 @@ namespace mao.frontend.Pages
             
             NotifyStateChanged();
         }
+
+        public void OnGroupKill()
+        {
+            NotifyStateChanged();
+        }
     }
 }

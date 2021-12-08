@@ -16,6 +16,16 @@ public class GroupController
 
 
     #region Controls
+    
+    public static void Kill(int groupId)
+    {
+        foreach (var streamId in GetStreamIdsInGroup(groupId))
+        {
+            StreamController.SetKill(streamId, true);
+        }
+        
+        CoreController.GroupControls.Remove(groupId);
+    }
 
     public static bool SetName(int groupId, string newValue)
     {

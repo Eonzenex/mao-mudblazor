@@ -17,12 +17,23 @@ public class AudioGroupComponentBase : ComponentBase
     
     
     [Parameter] public int GroupId { get; set; }
+    [Parameter] public Action OnGroupKill { get; set; }
     public GroupControls GroupControls => GroupController.GetGroupControls(GroupId);
 
     public IEnumerable<int> Streams => CoreController.GetStreamIdsInGroup(GroupId)
         .Where(StreamController.DoesStreamIdExists)
         .Where(streamId => !StreamController.GetStreamControls(streamId).Kill)
         .ToList();
+
+    public void KillGroup()
+    {
+        var numStreams = Streams.Count();
+        GroupController.Kill(GroupId);
+        
+        Utils.Log($"Killed group '{GroupId}', {numStreams} streams killed", LogLevel.Success);
+        
+        OnGroupKill();
+    }
 
     public void ChildOnKill()
     {
