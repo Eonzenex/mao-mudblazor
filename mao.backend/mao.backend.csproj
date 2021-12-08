@@ -4,6 +4,10 @@
         <TargetFramework>net6.0-windows</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <PackageVersion>1.2.0</PackageVersion>
+        <Title>Mao - Multi-Audio Output</Title>
+        <PackageProjectUrl>https://github.com/Eonzenex/multi.audio.output</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Eonzenex/multi.audio.output</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

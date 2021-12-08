@@ -3,12 +3,13 @@
 
 <div id="styled-body">
     <MudText Typo="Typo.h1" Class="mb-4">Multi-Audio Output</MudText>
+    
     @foreach (var group in Groups)
     {
         <AudioGroupComponent GroupId="group.GroupId"/>
     }
-    
-    <AddNewAudioGroup Callback="AddNewGroup" Class="mt-4" />
+
+    <AddNewAudioGroup Callback="AddNewGroup" Class="mt-4"/>
 </div>
 
 @code {

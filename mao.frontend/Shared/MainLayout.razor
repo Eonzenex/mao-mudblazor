@@ -9,6 +9,8 @@
         @* <MudButton Color="Color.Inherit" Link="/" Class="mx-4" Style="font-size: large;">Home</MudButton> *@
         @* <MudButton Color="Color.Inherit" Link="/data" Style="font-size: large;">Data</MudButton> *@
         
+        <MudIconButton OnClick="@RefreshAudioSources" Icon="@Icons.Filled.Refresh" Class="mx-4"/>
+        
         @if (UsingDarkMode)
         { <MudIconButton Icon="@Icons.Filled.Brightness7" Style="margin-left: auto;" OnClick="@ToggleDarkMode"/> }
         else

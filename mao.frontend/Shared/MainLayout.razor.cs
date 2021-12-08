@@ -1,4 +1,5 @@
 ﻿using System;
+using mao.backend.Controllers;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using MudBlazor.Utilities;
@@ -13,6 +14,10 @@ public class MainLayoutBase : LayoutComponentBase
 
     public bool UsingDarkMode { get; set; } = true;
     public MudTheme CurrentTheme { get; set; } = DarkMode;
+    
+    
+    public void RefreshAudioSources() => CoreController.LoadAudioSources();
+    
     public void ToggleDarkMode()
     {
         UsingDarkMode = !UsingDarkMode;
