@@ -62,7 +62,7 @@ public class Startup
     {
         var allAudioSourcePaths = Configuration.GetSection("AudioSourcePaths")?.Get<string[]>() ?? Array.Empty<string>();
         Utils.AudioSourcePaths = allAudioSourcePaths;
-        CoreController.Init();
+        CoreController.LoadAudioSources();
         
         if (!env.IsDevelopment())
         {

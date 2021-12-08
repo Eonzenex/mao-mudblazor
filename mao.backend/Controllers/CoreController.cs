@@ -12,8 +12,10 @@ public static class CoreController
     public static readonly Dictionary<int, StreamControls> StreamControls = new ();
 
 
-    public static void Init()
+    public static void LoadAudioSources()
     {
+        AudioSources.Clear();
+        
         var audioSrcLocations = Utils.GetAllAudioSources("*.wav", "*.mp3", "*.ogg", "*.flac");
         foreach (var audioPath in audioSrcLocations)
         {
