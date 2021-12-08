@@ -4,6 +4,9 @@
     <MudCardContent>
         <div style="display: flex; align-items: center; justify-content: space-between; flex-flow: row;">
             <MudText Typo="Typo.h3">@GroupControls.Name</MudText>
+            
+            <MudIconButton Icon="@Icons.Filled.Delete" OnClick="@KillGroup"/>
+            
             <SelectAudioDevice GroupId="@GroupId"/>
         </div>
         

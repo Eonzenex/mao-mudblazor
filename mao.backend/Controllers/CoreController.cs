@@ -121,13 +121,24 @@ public static class CoreController
         
         while (true)
         {
-            groupControls = GroupControls[groupId];
             streamControls = StreamControls[streamId];
             
             lock (streamControls)
             {
                 streamControls.Volume = Math.Clamp(streamControls.Volume, 0, 1);
                 audioFile.Volume = streamControls.Volume;
+                
+                // If shut down the stream, safely dispose then exit
+                if (streamControls.Kill)
+                {
+                    streamControls.Kill = false;
+                    audioFile.Dispose();
+                    outputDevice.Dispose();
+                    break;
+                }
+                
+                // Must be after Kill for group kill sake
+                groupControls = GroupControls[groupId];
                 
                 // If group device has changed, change device
                 if (groupControls.DeviceId != outputDevice.DeviceNumber)
@@ -138,15 +149,6 @@ public static class CoreController
                     audioFile.Dispose();
                     outputDevice.Dispose();
                     return;
-                }
-                
-                // If shut down the stream, safely dispose then exit
-                if (streamControls.Kill)
-                {
-                    streamControls.Kill = false;
-                    audioFile.Dispose();
-                    outputDevice.Dispose();
-                    break;
                 }
                 
                 // If stopping, pause the stream then set the position to the start
